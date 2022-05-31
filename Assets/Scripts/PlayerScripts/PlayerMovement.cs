@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();   
         _getDamage = GetComponent<PlayerGetDamage>();
     }
+
     private void Update()
     {
         if (_getDamage.IsAbleToMove)
@@ -38,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
+
     private void FixedUpdate()
     {
         int count = _rigidbody.Cast(Vector2.down, _results, _castDistance);

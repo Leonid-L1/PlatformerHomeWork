@@ -14,7 +14,7 @@ public class KillEnemy : MonoBehaviour
         {
             ContactPoint2D point = collision.GetContact(_firstContanctPointIndex);
 
-            if (point.normal.y >= 1f)
+            if (point.normal.y >= Vector2.up.y)
             {
                 enemy.Die();
             }

@@ -32,6 +32,7 @@ public class SetAnimation : MonoBehaviour
             _isRunning = false;
         }       
     }
+
     private IEnumerator SetRunBool()  
     {   
         while (true)

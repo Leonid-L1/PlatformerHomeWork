@@ -28,6 +28,7 @@ public class PlayerGetDamage : MonoBehaviour
         _health = _maxHealth;
         IsAbleToMove = true;
     }
+
     private void Update()
     {   
         if(_health == 0)
@@ -37,6 +38,7 @@ public class PlayerGetDamage : MonoBehaviour
             _health = _maxHealth;
         }
     }
+
     private void FixedUpdate()
     {
         if(IsAbleToMove != _movement.IsGrounded)
@@ -44,6 +46,7 @@ public class PlayerGetDamage : MonoBehaviour
             IsAbleToMove = true;
         }
     }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {   
         var enemy = collision.collider.GetComponent<EnemyDestruction>();
@@ -52,15 +55,15 @@ public class PlayerGetDamage : MonoBehaviour
         {
             ContactPoint2D point = collision.GetContact(_firstContanctPointIndex);
 
-            if(point.normal.x == 1 || point.normal.x == -1)
+            if(point.normal.x == Vector2.right.x || point.normal.x == Vector2.left.x)
             {
                 _health--;
-                Debug.Log("Health - " + _health);
                 AnimateDamage(point);
                 IsAbleToMove = false;
             }
         }
     }
+
     private void AnimateDamage(ContactPoint2D point)
     {
         Vector2 pushDirection = new Vector2(point.normal.x, Vector2.up.y);

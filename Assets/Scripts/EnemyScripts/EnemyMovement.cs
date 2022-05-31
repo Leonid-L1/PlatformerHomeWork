@@ -15,13 +15,12 @@ public class EnemyMovement : MonoBehaviour
     {
         _renderer = GetComponent<SpriteRenderer>();
     }
+
     private void Update()
     {
         if (_isReach)
         {
-            transform.position = Vector3.MoveTowards(transform.position, _movementPoint1.position, _speed * Time.deltaTime);
-
-            if (transform.position.x == _movementPoint1.position.x)
+            if (PointMove(_movementPoint1))
             {                 
                 _isReach = false;
                 _renderer.flipX = true;
@@ -29,13 +28,24 @@ public class EnemyMovement : MonoBehaviour
         }
         else
         {
-            transform.position = Vector3.MoveTowards(transform.position, _movementPoint2.position, _speed * Time.deltaTime);
-
-            if (transform.position.x == _movementPoint2.position.x)
+            if (PointMove(_movementPoint2))
             {
                 _isReach = true;
                 _renderer.flipX = false;    
             }
+        }
+    }
+    private bool PointMove(Transform movementPoint)
+    {
+        transform.position = Vector3.MoveTowards(transform.position, movementPoint.position, _speed * Time.deltaTime);
+
+        if(transform.position.x == movementPoint.position.x)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 }

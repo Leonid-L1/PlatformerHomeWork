@@ -13,6 +13,7 @@ public class GemSpawn : MonoBehaviour
         CreatePositions();
         Spawn();
     }
+
     private void CreatePositions()
     {
         _spawnPositions.Add(new Vector3(0.5f,0.5f,0));  
@@ -23,6 +24,7 @@ public class GemSpawn : MonoBehaviour
         _spawnPositions.Add(new Vector3(5,-11,0));
         _spawnPositions.Add(new Vector3(17,-11,0));
     }
+
     private void Spawn()
     {
         for(int i = 0; i < _spawnPositions.Count; i++)

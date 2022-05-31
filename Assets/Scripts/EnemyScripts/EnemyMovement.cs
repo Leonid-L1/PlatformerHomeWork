@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(SpriteRenderer))]
+
 public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] private Transform _movementPoint1;
@@ -22,16 +24,16 @@ public class EnemyMovement : MonoBehaviour
         {
             if (PointMove(_movementPoint1))
             {                 
-                _isReach = false;
                 _renderer.flipX = true;
+                _isReach = false;
             }
         }
         else
         {
             if (PointMove(_movementPoint2))
             {
-                _isReach = true;
                 _renderer.flipX = false;    
+                _isReach = true;
             }
         }
     }

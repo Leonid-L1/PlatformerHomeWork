@@ -8,8 +8,8 @@ public class Gem : MonoBehaviour
     {
         if (collision.TryGetComponent(out GemsCollecting player))
         {
-            Destroy(gameObject);
             player.IncreaseGemCount();
+            Destroy(gameObject);
         }
     }
 }

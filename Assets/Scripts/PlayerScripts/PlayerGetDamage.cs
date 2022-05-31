@@ -3,14 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
+[RequireComponent(typeof(SpriteRenderer))]
+[RequireComponent(typeof(PlayerMovement))]
+[RequireComponent(typeof(Rigidbody2D))]
+
 public class PlayerGetDamage : MonoBehaviour
 {
     [SerializeField] private float _pushForce = 7;
 
     private SpriteRenderer _spriteRenderer;
+    private PlayerMovement _movement;
     private Rigidbody2D _rigidbody2D;  
     private Vector3 _startPosition;
-    private PlayerMovement _movement;
 
     public bool IsAbleToMove { get; private set; }
 
@@ -22,8 +26,8 @@ public class PlayerGetDamage : MonoBehaviour
     private void Start()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
-        _rigidbody2D = GetComponent<Rigidbody2D>();
         _movement = GetComponent<PlayerMovement>(); 
+        _rigidbody2D = GetComponent<Rigidbody2D>();
         _startPosition = transform.position;
         _health = _maxHealth;
         IsAbleToMove = true;
@@ -33,8 +37,8 @@ public class PlayerGetDamage : MonoBehaviour
     {   
         if(_health == 0)
         {
-            transform.position = _startPosition;
             _rigidbody2D.velocity = Vector2.zero;
+            transform.position = _startPosition;
             _health = _maxHealth;
         }
     }
@@ -57,9 +61,9 @@ public class PlayerGetDamage : MonoBehaviour
 
             if(point.normal.x == Vector2.right.x || point.normal.x == Vector2.left.x)
             {
-                _health--;
                 AnimateDamage(point);
                 IsAbleToMove = false;
+                _health--;
             }
         }
     }

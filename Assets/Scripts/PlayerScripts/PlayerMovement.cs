@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(PlayerGetDamage))]
+[RequireComponent(typeof(Rigidbody2D))]
+
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float _jumpForce = 8;
@@ -25,15 +28,15 @@ public class PlayerMovement : MonoBehaviour
     {
         if (_getDamage.IsAbleToMove)
         {
-            if (Input.GetKeyDown(KeyCode.Space) == true && IsGrounded)
+            if (Input.GetKeyDown(KeyCode.Space)&& IsGrounded)
             {
                 _rigidbody.velocity = Vector2.up * _jumpForce;
             }
-            else if (Input.GetKey(KeyCode.D) == true)
+            else if (Input.GetKey(KeyCode.D))
             {
                 transform.Translate(_speed * Time.deltaTime, 0, 0);
             }
-            else if (Input.GetKey(KeyCode.A) == true)
+            else if (Input.GetKey(KeyCode.A))
             {
                 transform.Translate(_speed * Time.deltaTime * -1, 0, 0);
             }

@@ -17,12 +17,12 @@ public class GemSpawn : MonoBehaviour
     private void CreatePositions()
     {
         _spawnPositions.Add(new Vector3(0.5f,0.5f,0));  
+        _spawnPositions.Add(new Vector3(-10,-11,0));
         _spawnPositions.Add(new Vector3(-8,0.5f,0));
+        _spawnPositions.Add(new Vector3(17,-11,0));
         _spawnPositions.Add(new Vector3(-11,-6,0));
         _spawnPositions.Add(new Vector3(-6,-8,0));
-        _spawnPositions.Add(new Vector3(-10,-11,0));
         _spawnPositions.Add(new Vector3(5,-11,0));
-        _spawnPositions.Add(new Vector3(17,-11,0));
     }
 
     private void Spawn()
